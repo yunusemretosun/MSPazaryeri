@@ -1,0 +1,140 @@
+{% extends "./base.html" %}
+{% load static %}
+
+{% block title %}MSGlassware{% endblock %}
+
+{% block content %}
+<main>
+  <div><br></div><div><br></div>
+  <section class="py-5 text-center container" style="background-image: url('{{ '/media/images/test.png'}}'); background-size:contain">
+    <swiper-container class="mySwiper" pagination="true" pagination-dynamic-bullets="true"  autoplay-delay="2500" autoplay-disable-on-interaction="false">
+    
+      {% for banner in banners %}
+      <swiper-slide>
+        {% if banner.external_url %}
+          <a href="{{ banner.external_url }}"><img class="banner-img" src="{{ banner.resim.url }}" alt="{{ banner.alt_text }}" style="max-height: 400px; max-width: 100%"></a>
+        {% else %}
+          <img class="banner-img" src="{{ banner.resim.url }}" alt="{{ banner.alt_text }}"style="max-height: 400px; max-width: 100%">
+        {% endif %}
+      </swiper-slide>
+      {% endfor %}
+    </swiper-container>
+</section>
+
+<section>
+    <div class="album py-5 ">
+    <div class="container">
+      <div class="row row-cols">
+        <div class="col">
+          <a class="init">
+            <div class="categories__item-image">
+              <img class="lazyloaded" src="https://floimages.mncdn.com/media/catalog/product/img/banners/23-03/31/1encok-indirim4nisan-1680256228.gif" alt="">
+            </div>
+          </a>
+      </div>
+        <div class="col">
+          <a class="init">
+            <div class="categories__item-image">
+              <img class="lazyloaded" src="https://floimages.mncdn.com/media/catalog/product/img/banners/23-03/31/1encok-indirim4nisan-1680256228.gif" alt="">
+            </div>
+          </a>
+      </div>
+      <div class="col">
+        <a class="init">
+          <div class="categories__item-image">
+            <img class="lazyloaded" src="https://floimages.mncdn.com/media/catalog/product/img/banners/23-03/31/1encok-indirim4nisan-1680256228.gif" alt="">
+          </div>
+        </a>
+    </div>
+    <div class="col">
+      <a class="init">
+        <div class="categories__item-image">
+          <img class="lazyloaded" src="https://floimages.mncdn.com/media/catalog/product/img/banners/23-03/31/1encok-indirim4nisan-1680256228.gif" alt="">
+        </div>
+      </a>
+  </div>
+  <div class="col">
+    <a class="init">
+      <div class="categories__item-image">
+        <img class="lazyloaded" src="https://floimages.mncdn.com/media/catalog/product/img/banners/23-03/31/1encok-indirim4nisan-1680256228.gif" alt="">
+      </div>
+    </a>
+  </div>
+  <div class="col">
+    <a class="init">
+      <div class="categories__item-image">
+        <img class="lazyloaded" src="https://floimages.mncdn.com/media/catalog/product/img/banners/23-03/31/1encok-indirim4nisan-1680256228.gif" alt="">
+      </div>
+    </a>
+  </div>
+        <div class="col">
+          <a class="init">
+            <div class="categories__item-image">
+              <img class="lazyloaded" src="https://floimages.mncdn.com/media/catalog/product/img/banners/23-03/31/1encok-indirim4nisan-1680256228.gif" alt="">
+            </div>
+          </a>
+      </div>
+      <div class="col">
+        <a class="init">
+          <div class="categories__item-image">
+            <img class="lazyloaded" src="https://floimages.mncdn.com/media/catalog/product/img/banners/23-03/31/1encok-indirim4nisan-1680256228.gif" alt="">
+          </div>
+        </a>
+    </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div><br></div>
+<section>
+  <div class="album py-5 bg-light">
+    <div class="container">
+  <div class="product-container">
+    <div class="product-image-container">
+      <img class="product-image" src="https://floimages.mncdn.com/media/catalog/product/img/banners/23-03/31/giyimurunleri-4nisan.jpg" alt="Product Image">
+    </div>
+  </div>
+</div>
+</div>
+</section>
+
+<div><br></div>
+<section>
+    <div class="album py-5 ">
+    <div class="container">
+      <div class="pb-3 h5">Tüm Ürünler</div>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3">
+        {% for product in products %}
+        <div class="col">
+          <div class="card shadow">
+            <a href="{{ product.external_url }}">
+              <div class="bg-image" style="background-image: url('{{ product.image.url }}');"></div>
+            </a>
+            <div class="card-body">
+              <h5 class="card-title"><a href="{{ product.get_absolute_url }}" class="text-dark text-decoration-none">{{ product.title }}</a></h5>
+              <p class="card-text">{{ product.description }}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                {% if product.discounted_price %}
+                  <span class="text-muted"><strike>${{ product.price }}</strike></span>
+                  <span class="text-success fw-bold">${{ product.discounted_price }}</span>
+                {% else %}
+                  <span class="text-success fw-bold">${{ product.price }}</span>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% block extra_js %}
+  <script src="{% static 'js/myscript.js' %}"></script>
+{% endblock %}
+
+</main>
+
+{% endblock %}
