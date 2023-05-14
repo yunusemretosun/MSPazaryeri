@@ -1,6 +1,6 @@
 # MSPazaryeri
 in development
-www.mspazaryeri.com
+www.colosus-pythonanywhere.com
 
 Usage
 ```
